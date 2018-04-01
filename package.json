@@ -1,12 +1,13 @@
 {
   "name": "nodejs-package-inem",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "devDependencies": {
     "babel-cli": "*",
     "babel-core": "*",
     "babel-preset-env": "*",
-    "babel-preset-stage-0": "*"
+    "babel-preset-stage-0": "*",
+    "readline-sync": "*"
   },
   "scripts": {
     "babel-node": "babel-node",
