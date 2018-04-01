@@ -1,6 +1,6 @@
 #!/usr/local/bin/node
-import warmWelcome from '..'
+import warmWelcome from '..';
 
-console.log("Welcome to the Brain Games!")
+console.log('Welcome to the Brain Games!');
 
-warmWelcome()
+warmWelcome();
