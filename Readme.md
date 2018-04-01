@@ -1,0 +1,1 @@
+![](https://travis-ci.org/inem/project-lvl1-s244.svg?branch=master)
