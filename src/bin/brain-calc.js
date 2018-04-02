@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-import warmWelcome, { askForName, askQuestion, randomValue, getAnswer, correctAnswer, verdict, explanation } from '..';
+import warmWelcome, { askForName, askQuestion, randomValue, getAnswer, verdict, explanation } from '..';
 
 console.log('Welcome to the Brain Games!');
 const name = askForName();
 warmWelcome(name);
 
-const calculator = (expression) => {
+const calculate = (expression) => {
   const [a, sign, b] = expression.split(' ');
 
   switch (sign) {
@@ -30,7 +30,7 @@ const cycle = () => {
 
   askQuestion(expression);
   const answer = getAnswer();
-  const correctOne = calculator(expression);
+  const correctOne = calculate(expression);
 
   console.log(explanation(answer, correctOne));
   return verdict(answer, correctOne);
