@@ -5,20 +5,23 @@ console.log('Welcome to the Brain Games!');
 const name = askForName();
 warmWelcome(name);
 
+const even = number => number % 2 === 0;
+
 const cycle = () => {
   const value = randomValue();
   askQuestion(value);
   const answer = getAnswer();
-  const result = verdict(answer, correctAnswer(value));
+  const correctOne = correctAnswer(value, even);
 
-  console.log(explanation(answer, correctAnswer(value)));
-  return result;
+  console.log(explanation(answer, correctOne));
+  return verdict(answer, correctOne);
 };
 
 let flawlessVictory = true;
 
 [1, 2, 3].forEach(() => {
-  flawlessVictory = cycle();
+  const result = cycle();
+  flawlessVictory = flawlessVictory && result;
 });
 
 if (flawlessVictory) {
