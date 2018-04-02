@@ -1,6 +1,6 @@
 {
   "name": "nodejs-package-inem",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "dependencies": {
     "readline-sync": "*"
@@ -15,7 +15,8 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.10.0",
     "eslint-plugin-jest": "*",
-    "eslint-plugin-flowtype": "*"
+    "eslint-plugin-flowtype": "*",
+    "pryjs": "*"
   },
   "scripts": {
     "babel-node": "babel-node",
@@ -25,7 +26,8 @@
   },
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
-    "brain-even": "dist/bin/brain-even.js"
+    "brain-even": "dist/bin/brain-even.js",
+    "brain-calc": "dist/bin/brain-calc.js"
   },
   "files": [
     "dist"

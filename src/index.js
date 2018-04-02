@@ -1,23 +1,41 @@
 import readlineSync from 'readline-sync';
+// import pry from 'pryjs';
 
-const warmWelcome = () => {
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}`);
+const warmWelcome = (hello = 'Hello', name) => {
+  console.log(`${hello}, ${name}!`);
 };
 
-const correctAnswer = (number) => ((number % 2 === 0) ? 'yes' : 'no');
+const even = (number) => (number % 2 === 0);
 
-const explanation = (userAnswer, correctAnswer) => {
-  if (userAnswer === correctAnswer) { return 'Correct!'; }
-  return `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
+export function askForName() {
+  return readlineSync.question('May I have your name? ');
 }
 
-export function askQuestion(maxValue = 20) {
-  const r = Math.floor((Math.random() * maxValue) + 1);
-  console.log(`Question: ${r}`);
-  const userAnswer = readlineSync.question('Answer: ');
+export function correctAnswer(number) {
+  return (even(number) ? 'yes' : 'no');
+}
 
-  console.log(explanation(userAnswer, correctAnswer(r)));
+export function verdict(userAnswer, _correctAnswer) {
+  return (userAnswer === _correctAnswer);
+}
+
+export function explanation(userAnswer, _correctAnswer) {
+  if (userAnswer === _correctAnswer) { return 'Correct!'; }
+  return `'${userAnswer}' is wrong answer ;(. Correct answer was '${_correctAnswer}'.`;
+}
+
+export function randomValue(maxValue = 20) {
+  return Math.floor((Math.random() * maxValue) + 1);
+}
+
+export function askQuestion(question) {
+  console.log(`Question: ${question}`);
 };
+
+export function getAnswer(prefix = 'Answer') {
+  return readlineSync.question(`${prefix}: `);
+};
+
+
 
 export default warmWelcome;
