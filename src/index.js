@@ -5,7 +5,7 @@ const warmWelcome = (hello = 'Hello', name) => {
   console.log(`${hello}, ${name}!`);
 };
 
-const even = (number) => (number % 2 === 0);
+const even = number => number % 2 === 0;
 
 export function askForName() {
   return readlineSync.question('May I have your name? ');
@@ -30,12 +30,10 @@ export function randomValue(maxValue = 20) {
 
 export function askQuestion(question) {
   console.log(`Question: ${question}`);
-};
+}
 
 export function getAnswer(prefix = 'Answer') {
   return readlineSync.question(`${prefix}: `);
-};
-
-
+}
 
 export default warmWelcome;

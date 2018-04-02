@@ -15,11 +15,12 @@ const cycle = () => {
   return result;
 };
 
-var flawlessVictory = true;
+let flawlessVictory = true;
 
-[1, 2, 3].forEach(function(i) {
+[1, 2, 3].forEach(() => {
   flawlessVictory = cycle();
 });
 
-if (flawlessVictory)
+if (flawlessVictory) {
   warmWelcome('Congratulations', name);
+}
