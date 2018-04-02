@@ -14,7 +14,7 @@ const calculate = (expression) => {
       console.log(`Unknown sign "${sign}" in expression "${expression}" `);
       return NaN;
   }
-}
+};
 
 const setupGame = () => {
   const a = flow.randomValue(10);
@@ -29,4 +29,3 @@ const setupGame = () => {
 const play = () => flow.playGame(setupGame);
 
 export default play;
-

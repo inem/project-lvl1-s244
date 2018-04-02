@@ -5,21 +5,20 @@ const warmWelcome = (name, hello = 'Hello') => {
 };
 
 const askForName = () => readlineSync.question('May I have your name? ');
-const decide  = (userAnswer, _correctAnswer) => userAnswer == _correctAnswer;
 const randomValue = (maxValue = 20) => Math.floor((Math.random() * maxValue) + 1);
-const askQuestion = (question) => console.log(`Question: ${question}`);
+const askQuestion = question => console.log(`Question: ${question}`);
 const getAnswer = (prefix = 'Answer') => readlineSync.question(`${prefix}: `);
 
 const explain = (userAnswer, _correctAnswer) => {
   if (userAnswer == _correctAnswer) { return 'Correct!'; }
   return `'${userAnswer}' is wrong answer ;(. Correct answer was '${_correctAnswer}'.`;
-}
+};
 
 const cycleThrough = (expression, correctAnswer) => {
-  flow.askQuestion(expression);
-  const answer = flow.getAnswer();
+  askQuestion(expression);
+  const answer = getAnswer();
 
-  console.log(flow.explain(answer, correctAnswer));
+  console.log(explain(answer, correctAnswer));
   return (answer == correctAnswer);
 };
 
@@ -39,6 +38,6 @@ const playGame = (setupGameFunc) => {
   if (flawlessVictory) {
     warmWelcome('Congratulations', name);
   }
-}
+};
 
-export default { playGame, randomValue, askQuestion, getAnswer, explain };
+export default { playGame, randomValue };
