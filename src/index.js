@@ -5,7 +5,6 @@ const warmWelcome = (name, hello = 'Hello') => {
 };
 
 const askForName = () => readlineSync.question('May I have your name? ');
-const getCorrectAnswer = (number, decisionMaker) => decisionMaker(number) ? 'yes' : 'no';
 const decide  = (userAnswer, _correctAnswer) => userAnswer == _correctAnswer;
 const randomValue = (maxValue = 20) => Math.floor((Math.random() * maxValue) + 1);
 const askQuestion = (question) => console.log(`Question: ${question}`);
@@ -16,7 +15,15 @@ const explain = (userAnswer, _correctAnswer) => {
   return `'${userAnswer}' is wrong answer ;(. Correct answer was '${_correctAnswer}'.`;
 }
 
-const playGame = (setupGameFunc, cycleThroughFunc) => {
+const cycleThrough = (expression, correctAnswer) => {
+  flow.askQuestion(expression);
+  const answer = flow.getAnswer();
+
+  console.log(flow.explain(answer, correctAnswer));
+  return (answer == correctAnswer);
+};
+
+const playGame = (setupGameFunc) => {
   console.log('Welcome to the Brain Games!');
   const name = askForName();
   warmWelcome(name);
@@ -25,7 +32,7 @@ const playGame = (setupGameFunc, cycleThroughFunc) => {
 
   [1, 2, 3].forEach(() => {
     const [value, correctAnswer] = setupGameFunc();
-    const result = cycleThroughFunc(value, correctAnswer);
+    const result = cycleThrough(value, correctAnswer);
     flawlessVictory = flawlessVictory && result;
   });
 
@@ -34,4 +41,4 @@ const playGame = (setupGameFunc, cycleThroughFunc) => {
   }
 }
 
-export default { playGame, randomValue, getCorrectAnswer, askQuestion, getAnswer, explain };
+export default { playGame, randomValue, askQuestion, getAnswer, explain };
