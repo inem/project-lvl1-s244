@@ -1,37 +1,37 @@
 import readlineSync from 'readline-sync';
-// import pry from 'pryjs';
 
-const warmWelcome = (hello = 'Hello', name) => {
+const warmWelcome = (name, hello = 'Hello') => {
   console.log(`${hello}, ${name}!`);
 };
 
-export function askForName() {
-  return readlineSync.question('May I have your name? ');
-}
+const askForName = () => readlineSync.question('May I have your name? ');
+const getCorrectAnswer = (number, decisionMaker) => decisionMaker(number) ? 'yes' : 'no';
+const decide  = (userAnswer, _correctAnswer) => userAnswer == _correctAnswer;
+const randomValue = (maxValue = 20) => Math.floor((Math.random() * maxValue) + 1);
+const askQuestion = (question) => console.log(`Question: ${question}`);
+const getAnswer = (prefix = 'Answer') => readlineSync.question(`${prefix}: `);
 
-export function correctAnswer(number, decisionMaker) {
-  return (decisionMaker(number) ? 'yes' : 'no');
-}
-
-export function verdict(userAnswer, _correctAnswer) {
-  return (userAnswer == _correctAnswer);
-}
-
-export function explanation(userAnswer, _correctAnswer) {
+const explain = (userAnswer, _correctAnswer) => {
   if (userAnswer == _correctAnswer) { return 'Correct!'; }
   return `'${userAnswer}' is wrong answer ;(. Correct answer was '${_correctAnswer}'.`;
 }
 
-export function randomValue(maxValue = 20) {
-  return Math.floor((Math.random() * maxValue) + 1);
+const playGame = (setupGameFunc, cycleThroughFunc) => {
+  console.log('Welcome to the Brain Games!');
+  const name = askForName();
+  warmWelcome(name);
+
+  let flawlessVictory = true;
+
+  [1, 2, 3].forEach(() => {
+    const [value, correctAnswer] = setupGameFunc();
+    const result = cycleThroughFunc(value, correctAnswer);
+    flawlessVictory = flawlessVictory && result;
+  });
+
+  if (flawlessVictory) {
+    warmWelcome('Congratulations', name);
+  }
 }
 
-export function askQuestion(question) {
-  console.log(`Question: ${question}`);
-}
-
-export function getAnswer(prefix = 'Answer') {
-  return readlineSync.question(`${prefix}: `);
-}
-
-export default warmWelcome;
+export default { playGame, randomValue, getCorrectAnswer, askQuestion, getAnswer, explain };
