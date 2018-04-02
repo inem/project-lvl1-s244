@@ -1,6 +1,6 @@
 {
   "name": "nodejs-package-inem",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "dependencies": {
     "readline-sync": "*"
